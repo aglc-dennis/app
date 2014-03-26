@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace app.web.core
 {
@@ -15,15 +16,16 @@ namespace app.web.core
 
       public IProcessOneRequest get_command_that_can_process(IProvideDetailsAboutARequest request)
     {
-          foreach (var oneRequest in requests)
-          {
-              if (oneRequest.can_process(request))
-              {
-                  return oneRequest;
-              }
-          }
+          //foreach (var oneRequest in requests)
+          //{
+          //    if (oneRequest.can_process(request))
+          //    {
+          //        return oneRequest;
+          //    }
+          //}
 
-          throw new Exception("WHAAAAT I COULDN'T FIND ANYTHING SO I SHOULD THROW AN EXCEPTION DUE TO OUR ASSUMPTIONS");
+          //throw new Exception("WHAAAAT I COULDN'T FIND ANYTHING SO I SHOULD THROW AN EXCEPTION DUE TO OUR ASSUMPTIONS");
+          return requests.First(x => x.can_process(request));
     }
   }
 }
